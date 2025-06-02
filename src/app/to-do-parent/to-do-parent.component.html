@@ -1,0 +1,31 @@
+<div class="parent-container">
+  <h1>📝 My To-Do List</h1>
+
+  <form (ngSubmit)="addTask()" class="task-form" novalidate>
+    <input
+      type="text"
+      [(ngModel)]="newTask"
+      name="task"
+      placeholder="Type your new task here..."
+      required
+      minlength="3"
+      maxlength="50"
+      class="task-input"
+      autocomplete="off"
+      #taskInput="ngModel"
+    />
+    <button type="submit" [disabled]="taskInput.invalid" class="add-btn">Add</button>
+  </form>
+
+  <!-- Validation messages -->
+  <div class="helper-text" *ngIf="taskInput.invalid && (taskInput.dirty || taskInput.touched)">
+    <small *ngIf="taskInput.errors?.['required']">Task is required.</small>
+    <small *ngIf="taskInput.errors?.['minlength']">Minimum 3 characters.</small>
+    <small *ngIf="taskInput.errors?.['maxlength']">Maximum 50 characters.</small>
+  </div>
+
+  <app-todo
+    [tasks]="tasks"
+    (deleteTask)="handleDelete($event)">
+  </app-todo>
+</div>

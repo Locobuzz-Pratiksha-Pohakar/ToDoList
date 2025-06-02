@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TodoComponent } from './to-do-list/to-do-list.component'; 
+import { TodoParentComponent } from './to-do-parent/to-do-parent.component'; 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, TodoComponent],
-  template: `<app-todo></app-todo>`
+  imports: [CommonModule, TodoParentComponent],
+  template: `<app-todo-parent></app-todo-parent>`
 })
 export class AppComponent {}
